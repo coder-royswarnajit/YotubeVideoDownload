@@ -1,2 +1,94 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+# Set default behavior to automatically normalize line endings
+* text=auto eol=lf
+
+# Source code
+*.html text diff=html
+*.css text diff=css
+*.scss text diff=css
+*.sass text diff=css
+*.js text
+*.jsx text
+*.ts text
+*.tsx text
+*.json text
+*.graphql text
+*.md text diff=markdown
+*.mdx text diff=markdown
+
+# Configuration files
+*.lock text -diff
+package-lock.json text -diff
+*.lock.json text -diff
+.env.example text
+.editorconfig text
+.gitattributes text
+.gitignore text
+.prettierignore text
+.prettierrc text
+.eslintignore text
+.eslintrc text
+*.toml text
+*.yaml text
+*.yml text
+
+# Graphics & Media
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.mp4 binary
+*.mov binary
+*.webp binary
+*.webm binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary
+*.eot binary
+
+# SVG treated as text by default
+*.svg text
+# If you want to treat SVGs as binary, comment the previous line and uncomment the next
+# *.svg binary
+
+# Scripts
+*.bash text eol=lf
+*.fish text eol=lf
+*.sh text eol=lf
+*.zsh text eol=lf
+# These are explicitly windows files and should use crlf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# Docker
+*.dockerfile text
+Dockerfile text
+docker-compose.yml text
+
+# Documentation
+*.md text diff=markdown
+*.mdx text diff=markdown
+*.txt text
+LICENSE text
+AUTHORS text
+
+# RC files (like .babelrc or .eslintrc)
+*.*rc text
+
+# Configs
+*.config.* text
+
+# Ignore files (like .npmignore or .gitignore)
+*.*ignore text
+
+# Exclude files from exporting
+.gitattributes export-ignore
+.gitignore export-ignore
+.github export-ignore
+
+# Mark built files as generated to suppress them in diffs
+dist/** -diff linguist-generated=true
+build/** -diff linguist-generated=true
+coverage/** -diff linguist-generated=true
