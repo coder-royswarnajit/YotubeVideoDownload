@@ -128,6 +128,42 @@ const DashboardPage = () => {
                     {stat.change}
                   </span>
                 </div>
+                <div className="mt-2 flex items-baseline">
+                  <p className="text-2xl font-semibold text-gray-900 dark:text-white">{stat.value}</p>
+                </div>
+              </div>
+            </Card>
+          </motion.div>
+        ))}
+      </motion.div>
+
+      {/* Chart Section */}
+      <Card>
+        <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
+          <h2 className="text-lg font-medium text-gray-900 dark:text-white">Analytics Overview</h2>
+          <div className="flex space-x-2">
+            <Button
+              variant={activeChart === 'line' ? 'primary' : 'outline'}
+              size="sm"
+              onClick={() => setActiveChart('line')}
+            >
+              Line
+            </Button>
+            <Button
+              variant={activeChart === 'bar' ? 'primary' : 'outline'}
+              size="sm"
+              onClick={() => setActiveChart('bar')}
+            >
+              Bar
+            </Button>
+            <Button
+              variant={activeChart === 'pie' ? 'primary' : 'outline'}
+              size="sm"
+              onClick={() => setActiveChart('pie')}
+            >
+              Pie
+            </Button>
+          </div>
         </div>
 
         {isLoading ? (
@@ -259,42 +295,77 @@ const DashboardPage = () => {
           </ul>
         </div>
       </Card>
+
+      {/* Additional Dashboard Sections */}
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+        {/* Performance Metrics */}
+        <Card>
+          <h3 className="mb-4 text-lg font-medium text-gray-900 dark:text-white">Performance Metrics</h3>
+          <div className="space-y-4">
+            <div>
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-gray-500 dark:text-gray-400">CPU Usage</span>
+                <span className="text-sm font-medium text-gray-900 dark:text-white">45%</span>
+              </div>
+              <div className="mt-1 h-2 w-full rounded-full bg-gray-200 dark:bg-gray-700">
+                <div className="h-2 w-[45%] rounded-full bg-primary-500"></div>
+              </div>
+            </div>
+            <div>
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-gray-500 dark:text-gray-400">Memory Usage</span>
+                <span className="text-sm font-medium text-gray-900 dark:text-white">72%</span>
+              </div>
+              <div className="mt-1 h-2 w-full rounded-full bg-gray-200 dark:bg-gray-700">
+                <div className="h-2 w-[72%] rounded-full bg-warning-500"></div>
+              </div>
+            </div>
+            <div>
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-gray-500 dark:text-gray-400">Storage</span>
+                <span className="text-sm font-medium text-gray-900 dark:text-white">89%</span>
+              </div>
+              <div className="mt-1 h-2 w-full rounded-full bg-gray-200 dark:bg-gray-700">
+                <div className="h-2 w-[89%] rounded-full bg-error-500"></div>
+              </div>
+            </div>
+          </div>
+        </Card>
+
+        {/* Quick Actions */}
+        <Card>
+          <h3 className="mb-4 text-lg font-medium text-gray-900 dark:text-white">Quick Actions</h3>
+          <div className="grid grid-cols-2 gap-4">
+            <Button variant="outline" className="justify-start">
+              <svg className="mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+              </svg>
+              Add User
+            </Button>
+            <Button variant="outline" className="justify-start">
+              <svg className="mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              </svg>
+              Download Report
+            </Button>
+            <Button variant="outline" className="justify-start">
+              <svg className="mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              Settings
+            </Button>
+            <Button variant="outline" className="justify-start">
+              <svg className="mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              Help
+            </Button>
+          </div>
+        </Card>
+      </div>
     </div>
   );
 };
 
-export default DashboardPage;                <div className="mt-2 flex items-baseline">
-                  <p className="text-2xl font-semibold text-gray-900 dark:text-white">{stat.value}</p>
-                </div>
-              </div>
-            </Card>
-          </motion.div>
-        ))}
-      </motion.div>
-
-      {/* Chart Section */}
-      <Card>
-        <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
-          <h2 className="text-lg font-medium text-gray-900 dark:text-white">Analytics Overview</h2>
-          <div className="flex space-x-2">
-            <Button
-              variant={activeChart === 'line' ? 'primary' : 'outline'}
-              size="sm"
-              onClick={() => setActiveChart('line')}
-            >
-              Line
-            </Button>
-            <Button
-              variant={activeChart === 'bar' ? 'primary' : 'outline'}
-              size="sm"
-              onClick={() => setActiveChart('bar')}
-            >
-              Bar
-            </Button>
-            <Button
-              variant={activeChart === 'pie' ? 'primary' : 'outline'}
-              size="sm"
-              onClick={() => setActiveChart('pie')}
-            >
-              Pie
-            </Button>
+export default DashboardPage;
